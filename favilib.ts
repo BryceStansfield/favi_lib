@@ -24,11 +24,17 @@ class FaviLib {
         this.faviconElement.href = image.src
     }
 
-    load_uris(uris: Array<string>){
-        for(let uri of uris){
+    load_uris(uris: Array<string>, nicknames: Array<string> = null){
+        for(var i = 0; i < uris.length; i += 1){
             var im = new Image()
+            var uri = uris[i]
             im.src = uri
-            this.uriDict[uri] = im
+            if(nicknames == null){
+                this.uriDict[uri] = im
+            }
+            else{
+                this.uriDict[nicknames[i]] = im
+            }
         }
     }
 
